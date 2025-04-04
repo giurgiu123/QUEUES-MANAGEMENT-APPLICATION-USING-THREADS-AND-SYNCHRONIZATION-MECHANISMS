@@ -1,4 +1,7 @@
 package BusinessLogic;
 
-public class SelectionPolicy {
+
+public enum SelectionPolicy{
+        SHORTEST_QUEUE, SHORTEST_TIME
 }
+

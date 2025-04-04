@@ -7,19 +7,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimulationManager {
-    protected Scheduler scheduler;
+    //data read from UI
+    public int timeLimit = 100; // maxprocessing time - read from UI
+    public int maxProcessingTime = 10;
+    public int minProcessingTime = 2;
+    public int numberOfServers = 3;
+    public int numberOfClients = 100;
+    private Scheduler scheduler;
     protected SimulationFrame frame;
-    protected List<Task> tasks;
-    protected SelectionPolicy selectionPolicy;
+    protected List<Task> generatedTasks;
+    public SelectionPolicy selectionPolicy=SelectionPolicy.SHORTEST_TIME;
 
-    public SimulationManager(SimulationFrame frame, Scheduler scheduler, SelectionPolicy selectionPolicy) {
-        this.frame = frame;
-        this.scheduler = scheduler;
-        this.selectionPolicy = selectionPolicy;
-        this.tasks = new ArrayList<>();
+    public SimulationManager() {
+        // Initialize the scheduler
+        scheduler = new Scheduler(numberOfServers, numberOfServers, selectionPolicy);
 
+        // Initialize frame to display simulation
+        frame = new SimulationFrame();
+
+        // Generate numberOfClients clients using generateNRandomTasks()
+        generatedTasks = new ArrayList<>();
+        generateNRandomTasks();
     }
-    public void generateRandomTasks() {
+
+    public void generateNRandomTasks() {
 
     }
 }

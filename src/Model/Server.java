@@ -13,13 +13,32 @@ public class Server implements Runnable {
         this.tasks = new LinkedBlockingQueue<>();
         this.waitingPeriod = new AtomicInteger(0);
     }
-    public void addTask(Task task) {
-        this.tasks.add(task);
-        //mai tb sa ma ocup de waiting period
+    public void addTask(Task newTask) {
+        this.tasks.add(newTask);
+        waitingPeriod.addAndGet(newTask.getServiceTime());
+
     }
+
 
     public void run(){
-
+        while(true) {
+            try {
+                Task t = tasks.take();
+                for (int i = 0; i < t.getServiceTime(); i++) {
+                    Thread.sleep(1000);
+                }
+                waitingPeriod.addAndGet(-t.getServiceTime());
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
     }
+
+    public Task[] getTasks() {
+        return tasks.toArray(new Task[0]);
+    }
+
+
+
 
 }
