@@ -27,7 +27,10 @@ public class Server implements Runnable {
                 for (int i = 0; i < t.getServiceTime(); i++) {
                     Thread.sleep(1000);
                 }
-                waitingPeriod.addAndGet(-t.getServiceTime());
+                waitingPeriod.addAndGet(-t.getServiceTime());// cu 1 trebuie decrementat
+
+
+
             } catch (InterruptedException e) {
                 break;
             }
@@ -35,6 +38,7 @@ public class Server implements Runnable {
     }
 
     public Task[] getTasks() {
+
         return tasks.toArray(new Task[0]);
     }
 

@@ -29,6 +29,23 @@ public class SimulationManager {
         generatedTasks = new ArrayList<>();
         generateNRandomTasks();
     }
+    public void setNumberOfServers(int numberOfServers) {
+        this.numberOfServers = numberOfServers;
+
+    }
+    public void setNumberOfClients(int numberOfClients) {
+        this.numberOfClients = numberOfClients;
+    }
+    public void setTimeLimit(int timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+    public void setMinProcessingTime(SelectionPolicy selectionPolicy) {
+        this.selectionPolicy = selectionPolicy;
+    }
+    public void setMaxProcessingTime(int maxProcessingTime) {
+        this.maxProcessingTime = maxProcessingTime;
+    }
+
 
     public void generateNRandomTasks() {
 
