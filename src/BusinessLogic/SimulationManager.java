@@ -5,6 +5,7 @@ import Model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SimulationManager {
     //data read from UI
@@ -46,8 +47,18 @@ public class SimulationManager {
         this.maxProcessingTime = maxProcessingTime;
     }
 
+    public List<Task> getGeneratedTasks() {
+        return generatedTasks;
+    }
 
     public void generateNRandomTasks() {
+        Random random = new Random();
+        for (int i = 1; i <= numberOfClients; i++) {
+            int arrivalTime = random.nextInt(maxProcessingTime-minProcessingTime) + minProcessingTime;
+            int serviceTime = random.nextInt(maxProcessingTime-minProcessingTime) + minProcessingTime;
+            Task task= new Task(i,arrivalTime,serviceTime);
+            generatedTasks.add(task);//adaugam in lista
+        }
 
     }
 }

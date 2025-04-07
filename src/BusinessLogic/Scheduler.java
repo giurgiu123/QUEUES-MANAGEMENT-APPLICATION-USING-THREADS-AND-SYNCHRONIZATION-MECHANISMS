@@ -27,7 +27,7 @@ public class Scheduler {
             Thread serverThread = new Thread(server);
             serverThread.start(); //TODO thread pull
         }
-
+        changeStrategy(selectionPolicy);
     }
     public void changeStrategy(SelectionPolicy selectionPolicy) {
             if(selectionPolicy==SelectionPolicy.SHORTEST_QUEUE){
