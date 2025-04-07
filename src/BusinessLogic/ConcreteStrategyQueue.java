@@ -20,6 +20,7 @@ public class ConcreteStrategyQueue implements Strategy {
         if(targetServer!=null) {
             targetServer.addTask(task);
         }
+
     }
 
 }
